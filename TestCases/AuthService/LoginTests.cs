@@ -12,7 +12,8 @@ namespace NETAutomationFramework.TestCases.AuthService
         public LoginTests()
         {
             // Setup can be done here or in hooks
-        }        [Fact]
+        }
+        [Fact]
         public void Login_WithValidCredentials_ShouldSucceed()
         {
             TestSettings.LoadConfig();

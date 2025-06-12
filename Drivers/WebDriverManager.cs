@@ -20,7 +20,8 @@ namespace NETAutomationFramework.Drivers
                 }
                 return _driver!;
             }
-        }        public static void Initialize()
+        }
+        public static void Initialize()
         {
             var browser = TestSettings.Instance.Browser;
             _driver = browser.ToLower() switch

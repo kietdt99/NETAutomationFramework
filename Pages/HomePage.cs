@@ -2,7 +2,8 @@ using OpenQA.Selenium;
 using NETAutomationFramework.Utilities;
 
 namespace NETAutomationFramework.Pages
-{    public class HomePage : BasePage
+{
+    public class HomePage : BasePage
     {
         private readonly By _welcomeMessage = By.Id("welcome-message");
         private readonly By _logoutButton = By.Id("logout-btn");

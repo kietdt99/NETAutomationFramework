@@ -1,60 +1,24 @@
+using System.IO;
 using System.Text.Json;
 
-namespace NETAutomationFramework.Config
+namespace NETAutomationFramework.Utilities
 {
-    public class TestSettings
+    public static class TestSettings
     {
-        private static TestSettings? _instance;
-        private static readonly object _lock = new();
+        public static string BaseUrl { get; private set; }
+        public static string Browser { get; private set; }
+        public static string Username { get; private set; }
+        public static string Password { get; private set; }
 
-        public string BaseUrl { get; private set; } = string.Empty;
-        public string Browser { get; private set; } = string.Empty;
-        public string Username { get; private set; } = string.Empty;
-        public string Password { get; private set; } = string.Empty;
-
-        private TestSettings() { }
-
-        public static TestSettings Instance
+        static TestSettings()
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    lock (_lock)
-                    {
-                        _instance ??= new TestSettings();
-                    }
-                }
-                return _instance;
-            }
-        }
-
-        public static void LoadConfig(string configPath = "testsettings.json")
-        {
-            if (!File.Exists(configPath))
-            {
-                throw new FileNotFoundException($"Configuration file not found at {configPath}");
-            }
-
-            string jsonString = File.ReadAllText(configPath);
-            var config = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonString)
-                ?? throw new InvalidOperationException("Failed to parse configuration file");
-
-            lock (_lock)
-            {
-                _instance = new TestSettings
-                {
-                    BaseUrl = GetRequiredSetting(config, "BaseUrl"),
-                    Browser = GetRequiredSetting(config, "Browser"),
-                    Username = GetRequiredSetting(config, "Username"),
-                    Password = GetRequiredSetting(config, "Password")
-                };
-            }
-        }        private static string GetRequiredSetting(Dictionary<string, string> config, string key)
-        {
-            return config.TryGetValue(key, out string? value) && !string.IsNullOrEmpty(value)
-                ? value
-                : throw new InvalidOperationException($"Required setting '{key}' not found or empty in config");
+            var json = File.ReadAllText("testsettings.json");
+            using var doc = JsonDocument.Parse(json);
+            var root = doc.RootElement;
+            BaseUrl = root.GetProperty("BaseUrl").GetString();
+            Browser = root.GetProperty("Browser").GetString();
+            Username = root.GetProperty("Username").GetString();
+            Password = root.GetProperty("Password").GetString();
         }
     }
 }
