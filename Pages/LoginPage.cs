@@ -1,7 +1,3 @@
-using OpenQA.Selenium;
-using NETAutomationFramework.Utilities;
-using NETAutomationFramework.Config;
-
 namespace NETAutomationFramework.Pages
 {
     public class LoginPage : BasePage

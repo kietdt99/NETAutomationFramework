@@ -1,6 +1,3 @@
-using System.IO;
-using System.Text.Json;
-
 namespace NETAutomationFramework.Utilities
 {
     public static class TestSettings

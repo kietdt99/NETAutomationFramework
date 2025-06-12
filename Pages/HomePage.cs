@@ -1,6 +1,3 @@
-using OpenQA.Selenium;
-using NETAutomationFramework.Utilities;
-
 namespace NETAutomationFramework.Pages
 {
     public class HomePage : BasePage

@@ -1,10 +1,3 @@
-using System;
-using Xunit;
-using NETAutomationFramework.Drivers;
-using NETAutomationFramework.Pages;
-using NETAutomationFramework.Config;
-using NETAutomationFramework.Utilities;
-
 namespace NETAutomationFramework.TestCases.AuthService
 {
     public class LoginTests : IDisposable

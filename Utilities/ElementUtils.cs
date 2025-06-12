@@ -1,8 +1,3 @@
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
-using SeleniumExtras.WaitHelpers;
-
 namespace NETAutomationFramework.Utilities
 {
     public static class ElementUtils
