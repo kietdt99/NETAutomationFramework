@@ -15,7 +15,7 @@ namespace NETAutomationFramework.Pages
         private readonly By _errorMessage = By.CssSelector(".error-message");
         #endregion
 
-        public LoginPage(OpenQA.Selenium.IWebDriver driver) : base(driver)
+        public LoginPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;
             OpenPage(TestSettings.BaseUrl + "/login");
