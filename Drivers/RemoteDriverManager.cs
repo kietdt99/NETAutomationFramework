@@ -1,3 +1,6 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+
 namespace NETAutomationFramework.Drivers
 {
     public static class RemoteDriverManager

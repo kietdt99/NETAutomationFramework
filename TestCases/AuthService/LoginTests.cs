@@ -1,3 +1,7 @@
+using NETAutomationFramework.Config;
+using NETAutomationFramework.Drivers;
+using NETAutomationFramework.Pages;
+
 namespace NETAutomationFramework.TestCases.AuthService
 {
     public class LoginTests : IDisposable
@@ -9,12 +13,10 @@ namespace NETAutomationFramework.TestCases.AuthService
         [Fact]
         public void Login_WithValidCredentials_ShouldSucceed()
         {
-            TestSettings.LoadConfig();
             var driver = WebDriverManager.Driver;
-            var settings = TestSettings.Instance;
-            driver.Navigate().GoToUrl(settings.BaseUrl);
+            driver.Navigate().GoToUrl(TestSettings.BaseUrl);
             var loginPage = new LoginPage(driver);
-            var homePage = loginPage.LoginAndGoToHome(settings.Username, settings.Password);
+            var homePage = loginPage.LoginAndGoToHome(TestSettings.Username, TestSettings.Password);
             Assert.NotNull(homePage.GetWelcomeMessage());
         }
 

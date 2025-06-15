@@ -1,3 +1,7 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+
 namespace NETAutomationFramework.Utilities
 {
     public static class ElementUtils
@@ -7,7 +11,7 @@ namespace NETAutomationFramework.Utilities
         /// <summary>
         /// Clears the input field and sends the specified text.
         /// </summary>
-        public static void SetText(IWebDriver driver, By by, string text)
+        public static void SetText(OpenQA.Selenium.IWebDriver driver, OpenQA.Selenium.By by, string text)
         {
             var element = WaitForElementVisible(driver, by);
             element.Clear();
@@ -23,7 +27,7 @@ namespace NETAutomationFramework.Utilities
         /// <summary>
         /// Waits for an element to be clickable and then clicks it.
         /// </summary>
-        public static void Click(IWebDriver driver, By by, int timeoutSeconds = DefaultTimeoutSeconds)
+        public static void Click(OpenQA.Selenium.IWebDriver driver, OpenQA.Selenium.By by, int timeoutSeconds = DefaultTimeoutSeconds)
             => WaitForElementClickable(driver, by, timeoutSeconds).Click();
 
         #region Wait Methods

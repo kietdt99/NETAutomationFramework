@@ -1,3 +1,6 @@
+using OpenQA.Selenium;
+using NETAutomationFramework.Utilities;
+
 namespace NETAutomationFramework.Pages
 {
     public class HomePage : BasePage
@@ -5,7 +8,7 @@ namespace NETAutomationFramework.Pages
         private readonly By _welcomeMessage = By.Id("welcome-message");
         private readonly By _logoutButton = By.Id("logout-btn");
 
-        public HomePage(IWebDriver driver) : base(driver)
+        public HomePage(OpenQA.Selenium.IWebDriver driver) : base(driver)
         {
         }
 

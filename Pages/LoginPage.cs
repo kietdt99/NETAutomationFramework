@@ -1,3 +1,7 @@
+using OpenQA.Selenium;
+using NETAutomationFramework.Utilities;
+using NETAutomationFramework.Config;
+
 namespace NETAutomationFramework.Pages
 {
     public class LoginPage : BasePage
@@ -11,10 +15,10 @@ namespace NETAutomationFramework.Pages
         private readonly By _errorMessage = By.CssSelector(".error-message");
         #endregion
 
-        public LoginPage(IWebDriver driver) : base(driver)
+        public LoginPage(OpenQA.Selenium.IWebDriver driver) : base(driver)
         {
             _driver = driver;
-            OpenPage(TestSettings.Instance.BaseUrl + "/login");
+            OpenPage(TestSettings.BaseUrl + "/login");
         }
 
         protected override void OpenPage(string url)
@@ -25,15 +29,15 @@ namespace NETAutomationFramework.Pages
         #region Page Actions
         public void Login(string username, string password)
         {
-            ElementUtils.SetText(_driver, _usernameField, username);
-            ElementUtils.SetText(_driver, _passwordField, password);
-            ElementUtils.Click(_driver, _loginButton);
+            ElementUtils.SetText(Driver, _usernameField, username);
+            ElementUtils.SetText(Driver, _passwordField, password);
+            ElementUtils.Click(Driver, _loginButton);
         }
 
         public HomePage LoginAndGoToHome(string username, string password)
         {
             Login(username, password);
-            return new HomePage(_driver);
+            return new HomePage(Driver);
         }
 
         public string GetErrorMessage()

@@ -1,3 +1,9 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Edge;
+using NETAutomationFramework.Config;
+
 namespace NETAutomationFramework.Drivers
 {
     public static class WebDriverManager
@@ -17,7 +23,7 @@ namespace NETAutomationFramework.Drivers
         }
         public static void Initialize()
         {
-            var browser = TestSettings.Instance.Browser;
+            var browser = TestSettings.Browser;
             _driver = browser.ToLower() switch
             {
                 "chrome" => new ChromeDriver(),

@@ -1,3 +1,7 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+
 namespace NETAutomationFramework.Pages
 {
     public abstract class BasePage
@@ -5,7 +9,7 @@ namespace NETAutomationFramework.Pages
         protected IWebDriver Driver;
         protected WebDriverWait Wait;
 
-        protected BasePage(IWebDriver driver)
+        protected BasePage(OpenQA.Selenium.IWebDriver driver)
         {
             Driver = driver;
             Wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));

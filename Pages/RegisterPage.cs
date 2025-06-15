@@ -1,3 +1,8 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using NETAutomationFramework.Config;
+
 namespace NETAutomationFramework.Pages
 {
     public class RegisterPage : BasePage
@@ -15,7 +20,7 @@ namespace NETAutomationFramework.Pages
         public RegisterPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;
-            OpenPage(TestSettings.Instance.BaseUrl + "/register");
+            OpenPage(TestSettings.BaseUrl + "/register");
         }
 
         protected override void OpenPage(string url)
